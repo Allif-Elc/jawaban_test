@@ -1,0 +1,53 @@
+-- create
+CREATE DATABASE dbTest;
+
+CREATE TABLE BOOKS (
+  id INT NOT NULL  PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  categoryId INT NOT NULL,
+  writerId INT NOT NULL,
+  publicationYear INT,  
+  img BLOB
+);
+
+CREATE TABLE CATEGORY(
+  id INT NOT NULL PRIMARY KEY,
+  NAME VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE WRITER(
+  id INT NOT NULL PRIMARY KEY,
+  NAME VARCHAR(255) NOT NULL
+);
+-- insert
+INSERT INTO BOOKS VALUES (1,'python programming',101 ,201 , 2016, '' );
+INSERT INTO BOOKS VALUES (2,'java programming',101 ,201 , 2016, '' );
+INSERT INTO BOOKS VALUES (3,'R programming',101 ,201 , 2016, '' );
+INSERT INTO BOOKS VALUES (4,'javascript programming',101 ,201 , 2016, '' );
+
+INSERT INTO CATEGORY VALUES(101,'programming'),(102,'fiction');
+INSERT INTO WRITER VALUES(201,'john due'),(202,'Ravael Minola');
+
+  
+-- fetch 
+SELECT * FROM BOOKS;
+SELECT * FROM CATEGORY;
+SELECT * FROM WRITER;
+
+-- Tampilkan data book,category,writer
+SELECT BOOKS.id, name,CATEGORY.name,WRITER.name,publicationYear,img FROM ((BOOKS 
+INNER JOIN CATEGORY ON BOOKS.categoryId = CATEGORY.id)
+INNER JOIN WRITER ON BOOKS.writerId = WRITER.id );
+
+-- Tampilkan seluruh data tabel book
+SELECT * from book_tb;
+
+-- Tampilkan seluruh data tabel writer
+SELECT * from writer_tb;
+
+-- Tampilkan data spesifik book,category,writer
+SELECT book_tb.id, name,category_tb.name,writer_tb.name,publication_year,imgFROM ((book_tb 
+INNER JOIN category_tb ON book_tb.id = category_tb.id)
+INNER JOIN writer_tb ON book_tb.id = category_tb.id ) WHERE name = 'java programming' AND category_tb.name = 'programming' AND writer_tb.name ='John Due';
+
+
