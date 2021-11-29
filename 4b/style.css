@@ -1,0 +1,27 @@
+body{
+    background-color: black;
+    font-family: sans-serif;
+    margin: 3px;
+}
+
+h3{
+    color: orangered;
+}
+
+a{
+    color: white;
+}
+
+button{
+    color: white;
+    background-color: blue;
+}
+
+p{
+    color: white;
+}
+
+.detail-info{
+    color: orangered;
+    margin: 0px 10px;
+}
